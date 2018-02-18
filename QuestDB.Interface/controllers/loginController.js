@@ -4,14 +4,19 @@
 var sess;
 var mongoose = require('mongoose'),
   User = mongoose.model('Users');
-var path = require("path");
 
 exports.default_page = function (req, res) {
   var cookie = req.cookies['user'];
-  if (cookie) {
-    res.redirect("/home")
+  if(!cookie){
+    res.render('QuestDB.Interface/views/login/index.html');
   } else {
-    res.render(path.join(__dirname + "/../../views/login/index.html"));
+    User.findById(cookie, function(err, response){
+        if (err || !response.length) {
+          res.render('QuestDB.Interface/views/login/index.html');
+        } else {
+          res.render('QuestDB.Interface/views/home/index.html');
+        }
+    });
   }
 };
 

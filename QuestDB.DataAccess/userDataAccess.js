@@ -1,8 +1,7 @@
 module.exports = userDataAccess;
 
 function userDataAccess(){
-
-
+    
     if(!this.mongoose) {
         this.mongoose = require('mongoose');        
         this.uri = "mongodb://eckounltd:cefet123@custerpokemon-shard-00-00-zznsg.mongodb.net:27017,custerpokemon-shard-00-01-zznsg.mongodb.net:27017,custerpokemon-shard-00-02-zznsg.mongodb.net:27017/pokedeck?ssl=true&replicaSet=CusterPokemon-shard-0&authSource=admin";
