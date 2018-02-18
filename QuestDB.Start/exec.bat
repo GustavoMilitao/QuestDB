@@ -1,2 +1,2 @@
-cd C:/pokedeck-master
+cd C:/questDB-master
 npm run start

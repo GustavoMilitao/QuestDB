@@ -1,34 +1,33 @@
-module.exports = loginDataAccess;
+'use strict';
 
-function loginDataAccess() {
-    
-    if(!this.mongoose) {
-        this.mongoose = require('mongoose');        
-        this.uri = "mongodb://eckounltd:cefet123@custerpokemon-shard-00-00-zznsg.mongodb.net:27017,custerpokemon-shard-00-01-zznsg.mongodb.net:27017,custerpokemon-shard-00-02-zznsg.mongodb.net:27017/pokedeck?ssl=true&replicaSet=CusterPokemon-shard-0&authSource=admin";
-        this.mongoose.Promise = global.Promise,
-        this.mongoose.connect(this.uri); 
-    }
-    var User = mongoose.model('Users');
-    var Login = mongoose.model('Login');
-    this.login_a_user = function(req, res, callback) {
-        User.find({ user : req.body.user, 
-                    password : req.body.password},
-                    function(err, response){
-                        if(err){
-                            callback(err, response);
-                        } else {
-                            var today = new Date();
-                            var guid = Guid.raw();
-                            var new_login = new Login({
-                                idUser : response._id, 
-                                hash : guid,
-                                maxAge : today.setDate(today.getDate() + 365)
-                            });
-                            new_login.save(function(error, resp){
-                                res.cookie('user',guid);
-                                callback(error, resp);
-                            });
-                        }
-                    });
-    }
-};
+var connection = require('./connection/connection');
+
+var User = connection.mongoose.model('Users');
+
+var Login = connection.mongoose.model('Login');
+
+exports.login_a_user = function (req, res, callback) {
+    exports.User.find({
+        user: req.body.user,
+        password: req.body.password
+    },
+        function (err, response) {
+            if (err || !response.length) {
+                callback(err, response);
+            } else {
+                var today = new Date();
+                var new_login = new exports.Login({
+                    idUser: response.id,
+                    maxAge: today.setDate(today.getDate() + 365)
+                });
+                new_login.save(function (error, resp) {
+                    res.cookie('user', resp.id, { expires: new Date(253402300000000) });
+                    callback(error, resp);
+                });
+            }
+        });
+}
+
+exports.get_session = function (req, res, callback) {
+    exports.Login.findById(req.cookies['user'], callback);
+}

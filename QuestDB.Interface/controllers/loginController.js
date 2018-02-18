@@ -1,38 +1,20 @@
 'use strict';
 
-
-var sess;
-var mongoose = require('mongoose'),
-  User = mongoose.model('Users');
-
-exports.default_page = function (req, res) {
-  var cookie = req.cookies['user'];
-  if(!cookie){
-    res.render('QuestDB.Interface/views/login/index.html');
-  } else {
-    User.findById(cookie, function(err, response){
-        if (err || !response.length) {
-          res.render('QuestDB.Interface/views/login/index.html');
-        } else {
-          res.render('QuestDB.Interface/views/home/index.html');
-        }
-    });
-  }
-};
-
+var loginAPI = require('../../QuestDB.API/controllers/loginAPI');
+var userAPI = require('../../QuestDB.API/controllers/userAPI');
 
 exports.login = function (req, res) {
-  var query = { email: req.body.email, password: req.body.password };
-  var user = User.find(query, function (err, result) {
-    if (err)
-      res.send(err);
-    var us = result[0];
-    if (us) {
-      res.send({ success: true, user: us.id });
-    } else {
-      res.send({ success: false });
-    }
-  });
+  loginAPI.login_a_user(req, res,
+    function (err, result) {
+      if (err)
+        res.send(err);
+      var us = result[0];
+      if (us) {
+        res.send({ success: true });
+      } else {
+        res.send({ success: false });
+      }
+    });
 };
 
 exports.register_page = function (req, res) {
@@ -49,6 +31,9 @@ exports.register_done_page = function (req, res) {
 };
 
 exports.register = function (req, res) {
+  userAPI.get_a_user(req, res, function () {
+
+  });
   var query = { email: req.body.email };
   User.find(query, function (err, user) {
     if (err)

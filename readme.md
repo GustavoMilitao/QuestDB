@@ -5,7 +5,7 @@ Para iniciar o sistema:
 1 - Certifique-se de possuir instalado o framework NODE.JS.
 
 
-2 - Baixe o sistema e extraia para C:\ (A pasta pokedeck deverá ficar No C:. O Batch foi escrito para esse diretório para facilitar a execução. Caso possua algum conhecimento, altere o arquivo para o diretório desejado).
+2 - Baixe o sistema e extraia para C:\ (A pasta questDB deverá ficar No C:. O Batch foi escrito para esse diretório para facilitar a execução. Caso possua algum conhecimento, altere o arquivo para o diretório desejado).
 
 
 3 - Entre na pasta e execute o arquivo exec.bat. (preferível em modo de administrador).

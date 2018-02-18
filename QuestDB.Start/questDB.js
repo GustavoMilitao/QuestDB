@@ -1,41 +1,39 @@
-module.exports = questDB;
+'use strict';
 
-function questDB(){
-    // import das frameworks
-    this.express = require('express');
-    this.app = express();
-    this.port = process.env.PORT || 3000;
-    this.cookieParser = require('cookie-parser');
-    this.bodyParser = require('body-parser');
-    this.app.use(this.cookieParser());
-    this.app.use(this.bodyParser.urlencoded({ extended: true }));
-    this.app.use(this.bodyParser.json());
-    this.path = require('path');
-    this.app.engine('html', require('ejs').renderFile);
-    this.openUrl = require("openurl");
-    
-    // import dos arquivos da aplicação
+// import das frameworks
+exports.express = require('express');
+exports.app = exports.express();
+exports.port = process.env.PORT || 3000;
+exports.cookieParser = require('cookie-parser');
+exports.bodyParser = require('body-parser');
+exports.app.use(exports.cookieParser());
+exports.app.use(exports.bodyParser.urlencoded({ extended: true }));
+exports.app.use(exports.bodyParser.json());
+exports.path = require('path');
+exports.app.engine('html', require('ejs').renderFile);
+exports.openUrl = require("openurl");
 
-    //entidades
-    this.user = require('../QuestDB.Entities/user');
-    this.question = require('../QuestDB.Entities/question');
+// import dos arquivos da aplicação
 
-    // rotas API
-    this.routesUser = require('../QuestDB.API/routes/userRoutes');      
-    this.routesQuestion = require('../QuestDB.API/routes/questionRoutes');      
+//entidades
+exports.user = require('../QuestDB.Entities/user');
+exports.question = require('../QuestDB.Entities/question');
 
-    // rotas Aplicação
-    this.routesLogin = require('../QuestDB.Interface/routes/loginRoutes');    
-    this.routesHome = require('../QuestDB.Interface/routes/homeRoutes');   
-    
-    // Inicialização das rotas
-    this.routesQuestion(this.app);
-    this.routesUser(this.app); 
-    this.routesLogin(this.app);
-    this.routesHome(this.app);
+// rotas API
+exports.routesUser = require('../QuestDB.API/routes/userRoutes');
+exports.routesQuestion = require('../QuestDB.API/routes/questionRoutes');
 
-    // import dos styles, scripts e fontes através do middleware
-    this.app.use('/styles',this.express.static('QuestDB.Interface/styles'));
-    this.app.use('/scripts',this.express.static('QuestDB.Interface/scripts'));
-    this.app.use('/fonts',this.express.static('QuestDB.Interface/fonts'));
-}
+// rotas Aplicação
+exports.routesLogin = require('../QuestDB.Interface/routes/loginRoutes');
+exports.routesHome = require('../QuestDB.Interface/routes/homeRoutes');
+
+// Inicialização das rotas
+exports.routesQuestion(exports.app);
+exports.routesUser(exports.app);
+exports.routesLogin(exports.app);
+exports.routesHome(exports.app);
+
+// import dos styles, scripts e fontes através do middleware
+exports.app.use('/styles', exports.express.static('QuestDB.Interface/styles'));
+exports.app.use('/scripts', exports.express.static('QuestDB.Interface/scripts'));
+exports.app.use('/fonts', exports.express.static('QuestDB.Interface/fonts'));

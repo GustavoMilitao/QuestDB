@@ -8,10 +8,6 @@ var User = new Schema({
     type: String,
     default: ""
   },
-  hash: {
-    type: String,
-    default: ""
-  },
   maxAge: {
     type: Date,
     default: ""

@@ -1,15 +1,15 @@
 {
-    "name": "pokedeck",
+    "name": "questdb",
     "version": "1.0.0",
     "description": "RESTful Node.js pokemon team creator system",
     "main": "Index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon server.js"
+        "start": "nodemon QuestDB.Start/server.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/GustavoMilitao/pokedeck.git"
+        "url": "git+https://github.com/GustavoMilitao/questDB.git"
     },
     "keywords": [
         "RESTful",
@@ -19,9 +19,9 @@
     "author": "Gustavo Henrique",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/GustavoMilitao/pokedeck/issues"
+        "url": "https://github.com/GustavoMilitao/questDB/issues"
     },
-    "homepage": "https://github.com/GustavoMilitao/pokedeck#readme",
+    "homepage": "https://github.com/GustavoMilitao/questDB#readme",
     "devDependencies": {
         "nodemon": "^1.11.0"
     },

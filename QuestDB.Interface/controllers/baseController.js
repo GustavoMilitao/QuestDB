@@ -2,7 +2,7 @@
 
 var loginAPI = require('../../QuestDB.API/controllers/loginAPI');
 
-exports.home = function (req, res) {
+exports.default_page = function (req, res) {
     var cookie = req.cookies['user'];
     if (!cookie) {
         res.render('QuestDB.Interface/views/login/index.html');
