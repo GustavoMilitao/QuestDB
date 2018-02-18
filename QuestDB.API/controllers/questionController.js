@@ -1,11 +1,11 @@
 'use strict';
 
 
-var mongoose = require('mongoose'),
-  Question = mongoose.model('Questions');
+var questionBusiness = require('questionBusiness');
 
 exports.get_questions = function(req, res){
-  Question.find({}, function(err, response){
+  questionBusiness.get_questions(req, res, 
+    function(err, response) {
     if(err)
       res.send(err);
     res.send({ success: true, questions : response});
@@ -13,8 +13,8 @@ exports.get_questions = function(req, res){
 }
 
 exports.get_a_question = function(req, res){
-  Question.findById(req.params.questionId
-    , function(err, response){
+  questionBusiness.get_a_question(req, res, 
+    function(err, response){
     if(err)
       res.send(err);
     res.send({ success: true, questions : response});
@@ -22,8 +22,8 @@ exports.get_a_question = function(req, res){
 }
 
 exports.create_a_question = function(req, res) {
-  var new_question = new Question(req.body);
-  new_question.save(function(err, response) {
+  questionBusiness.create_a_question(req, res,
+    function(err, response) {
     if (err)
       res.send(err);
     res.send({success : true, question : response });
@@ -31,11 +31,8 @@ exports.create_a_question = function(req, res) {
 };
 
 exports.update_a_question = function(req, res) {
-  Question.findOneAndUpdate(
-      {_id: req.params.questionId}, 
-      req.body, 
-      {new: true}, 
-      function(err, response) {
+  questionBusiness.update_a_question(req, res, 
+    function(err, response) {
     if (err)
       res.send(err);
     res.send({ success : true, question : response });
@@ -44,9 +41,8 @@ exports.update_a_question = function(req, res) {
 
 
 exports.delete_a_question = function(req, res) {
-  Question.remove({
-    _id: req.params.questionId
-  }, function(err, question) {
+  questionBusiness.delete_a_question(req, res,
+    function(err, question) {
     if (err)
       res.send(err);
     res.send({ success : true });

@@ -5,12 +5,8 @@ function questDB(){
     this.express = require('express');
     this.app = express();
     this.port = process.env.PORT || 3000;
-    this.mongoose = require('mongoose');
     this.cookieParser = require('cookie-parser');
     this.bodyParser = require('body-parser');
-    this.uri = "mongodb://eckounltd:cefet123@custerpokemon-shard-00-00-zznsg.mongodb.net:27017,custerpokemon-shard-00-01-zznsg.mongodb.net:27017,custerpokemon-shard-00-02-zznsg.mongodb.net:27017/pokedeck?ssl=true&replicaSet=CusterPokemon-shard-0&authSource=admin";
-    this.mongoose.Promise = global.Promise,
-    this.mongoose.connect(this.uri); 
     this.app.use(this.cookieParser());
     this.app.use(this.bodyParser.urlencoded({ extended: true }));
     this.app.use(this.bodyParser.json());
