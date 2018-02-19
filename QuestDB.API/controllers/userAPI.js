@@ -20,8 +20,8 @@ exports.get_a_user = function (req, res) {
     });
 }
 
-exports.get_user_by_metadata = function (req, res) {
-  userBusiness.get_user_by_metadata(req, res,
+exports.get_user_by_query = function (req, res) {
+  userBusiness.get_user_by_query(req, res,
     function (err, response) {
       if (err)
         res.send({ success: false, error: err });
@@ -50,7 +50,7 @@ exports.update_a_user = function (req, res) {
 
 exports.delete_a_user = function (req, res) {
   userBusiness.delete_a_user(req, res,
-    function (err, user) {
+    function (err, response) {
       if (err)
         res.send({ success: false, error: err });
       res.send({ success: true });

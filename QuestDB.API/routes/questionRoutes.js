@@ -10,4 +10,10 @@ module.exports = function (app) {
     .get(controller.get_a_question)
     .put(controller.update_a_question)
     .delete(controller.delete_a_question);
+
+    app.route('/api/users/:userId/questions')
+    .get(controller.get_user_questions);
+
+    app.route('/api/users/search/:query/questions')
+    .get(controller.get_user_questions_by_query);
 };

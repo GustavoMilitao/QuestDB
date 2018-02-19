@@ -10,8 +10,8 @@ exports.get_a_user = function (req, res, callback) {
       userDataAccess.get_a_user(req, res, callback);
 };
 
-exports.get_user_by_metadata = function (req, res, callback) {
-      userDataAccess.get_user_by_metadata(req, res, callback);
+exports.get_user_by_query = function (req, res, callback) {
+      userDataAccess.get_user_by_query(req, res, callback);
 };
 
 exports.create_a_user = function (req, res, callback) {

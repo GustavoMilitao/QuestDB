@@ -2,6 +2,7 @@
 
 var loginAPI = require('../../QuestDB.API/controllers/loginAPI');
 var userAPI = require('../../QuestDB.API/controllers/userAPI');
+var path = require('path');
 
 exports.login = function (req, res) {
   loginAPI.login_a_user(req, res,
@@ -31,22 +32,14 @@ exports.register_done_page = function (req, res) {
 };
 
 exports.register = function (req, res) {
-  userAPI.get_a_user(req, res, function () {
-
-  });
-  var query = { email: req.body.email };
-  User.find(query, function (err, user) {
-    if (err)
-      res.send(err);
-    if (user.length > 0) {
-      res.send({ success: false });
-    } else {
-      var new_user = new User(req.body);
-      new_user.save(function (err, user) {
-        if (err)
-          res.send(err);
-        res.send({ success: true });
-      });
-    }
-  });
+  userAPI.get_user_by_query(req, res,
+    function (err, user) {
+      if (err)
+        res.send(err);
+      if (user.length > 0) {
+        res.send({ success: false });
+      } else {
+        userAPI.create_a_user(req, res);
+      }
+    });
 };

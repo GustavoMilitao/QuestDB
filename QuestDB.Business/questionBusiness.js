@@ -22,3 +22,11 @@ exports.update_a_question = function (req, res, callback) {
 exports.delete_a_question = function (req, res, callback) {
       questionDataAccess.delete_a_question(req, res, callback);
 };
+
+exports.get_user_questions = function(req, res, callback){
+      questionDataAccess.get_user_questions(req, res, callback);
+};
+
+exports.get_user_questions_by_query = function(req, res, callback){
+      questionDataAccess.get_user_questions_by_query(req, res, callback);
+};

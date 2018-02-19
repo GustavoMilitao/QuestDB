@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var User = new Schema({
+var Login = new Schema({
   idUser: {
     type: String,
     default: ""
@@ -14,4 +14,4 @@ var User = new Schema({
   }
 });
 
-module.exports = mongoose.model('Users', User);
+module.exports = mongoose.model('Logins', Login);

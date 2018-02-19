@@ -4,7 +4,7 @@ var connection = require('./connection/connection');
 
 var User = connection.mongoose.model('Users');
 
-var Login = connection.mongoose.model('Login');
+var Login = connection.mongoose.model('Logins');
 
 exports.login_a_user = function (req, res, callback) {
     exports.User.find({

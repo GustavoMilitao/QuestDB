@@ -11,11 +11,13 @@ exports.get_a_user = function (req, res, callback) {
     User.findById(req.params.userId, callback);
 }
 
-exports.get_user_by_metadata = function (req, res, callback) {
-    var metadata = JSON.parse(req.params.metadata);
+exports.get_user_by_query = function (req, res, callback) {
+    var metadata = JSON.parse(req.params.query);
     var obj = {};
-    Object.keys(metadata).forEach(function (key) {
-        obj[key] = metadata[key];
+    metadata.forEach(function(value, index){
+        Object.keys(value).forEach(function (key) {
+            obj[key] = {'$regex': new RegExp(value[key], "i")};
+        });
     });
     User.find(obj, callback);
 }
@@ -33,5 +35,6 @@ exports.update_a_user = function (req, res, callback) {
 };
 
 exports.delete_a_user = function (req, res, callback) {
-    User.findByIdAndRemovemove(req.params.userId, callback);
+    User.findByIdAndRemove(req.params.userId, callback);
 };
+

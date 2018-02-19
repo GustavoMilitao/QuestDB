@@ -18,18 +18,21 @@ exports.openUrl = require("openurl");
 //entidades
 exports.user = require('../QuestDB.Entities/user');
 exports.question = require('../QuestDB.Entities/question');
+exports.login = require('../QuestDB.Entities/login');
 
 // rotas API
-exports.routesUser = require('../QuestDB.API/routes/userRoutes');
-exports.routesQuestion = require('../QuestDB.API/routes/questionRoutes');
+exports.routesUserAPI = require('../QuestDB.API/routes/userRoutes');
+exports.routesQuestionAPI = require('../QuestDB.API/routes/questionRoutes');
+exports.routesLoginAPI = require('../QuestDB.API/routes/loginRoutes');
 
 // rotas Aplicação
 exports.routesLogin = require('../QuestDB.Interface/routes/loginRoutes');
 exports.routesHome = require('../QuestDB.Interface/routes/homeRoutes');
 
 // Inicialização das rotas
-exports.routesQuestion(exports.app);
-exports.routesUser(exports.app);
+exports.routesQuestionAPI(exports.app);
+exports.routesUserAPI(exports.app);
+exports.routesLoginAPI(exports.app);
 exports.routesLogin(exports.app);
 exports.routesHome(exports.app);
 

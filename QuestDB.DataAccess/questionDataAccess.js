@@ -3,6 +3,7 @@
 var connection = require('./connection/connection');
 
 var Question = connection.mongoose.model('Questions');
+var userDataAccess = require('../QuestDB.DataAccess/userDataAccess');
 
 exports.get_questions = function (req, res, callback) {
     Question.find({}, callback);
@@ -24,7 +25,28 @@ exports.update_a_question = function (req, res, callback) {
         { new: true }, callback);
 };
 
-
 exports.delete_a_question = function (req, res, callback) {
-    Question.findByIdAndRemovemove(req.params.questionId, callback);
+    Question.findByIdAndRemove(req.params.questionId, callback);
+};
+
+exports.get_user_questions = function (req, res, callback) {
+    Question.find({ idUser: req.params.userId }, callback);
+};
+
+exports.get_user_questions_by_query = function (req, res, callback) {
+    userDataAccess.get_user_by_query(req, res,
+        function (err, response) {
+            if (err) {
+                callback(err, response);
+            } else {
+                var usersIds = response.map(function (value) {
+                    return { idUser: value.id };
+                });
+                if(usersIds.length){
+                    Question.find({ $or: usersIds }, callback);
+                } else {
+                    callback(err, []);
+                }
+            }
+        });
 };
