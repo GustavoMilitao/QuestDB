@@ -1,7 +1,8 @@
 'use strict';
 module.exports = function (app) {
   var controller = require('../controllers/questionAPI');
-  
+  var path = require('path');
+
   app.route('/api/questions')
     .get(controller.get_questions)
     .post(controller.create_a_question);

@@ -1,4 +1,4 @@
-﻿var app = angular.module('pquestDB, []);
+﻿var app = angular.module('questDB', []);
 app.controller('registerCtrl', function ($scope, $http, $timeout) {
     $scope.form = {
         user: "",

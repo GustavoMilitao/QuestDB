@@ -1,4 +1,4 @@
-﻿var app = angular.module('pquestDB, ['angucomplete-alt']);
+﻿var app = angular.module('questDB');
 app.controller('homeCtrl', function ($scope, $http, $timeout, $templateCache, $compile) {
     var user;
 

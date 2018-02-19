@@ -1,15 +1,4 @@
-﻿angular.module('pquestDB, [])
-    .controller('loginCtrl', [function () {
-        angular.element(document).ready(function () {
-            var cookie = getCookie('user');
-            if(cookie){
-                window.location.href = "/home";
-            }
-        });
-    }]);
-
-
-var app = angular.module('questDB', []);
+﻿var app = angular.module('questDB');
 app.controller('loginCtrl', function ($scope, $http, $timeout) {
     $scope.form = {
         email: "",

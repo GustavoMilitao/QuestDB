@@ -13,4 +13,5 @@ app.route('/api/users/:userId')
 
   app.route('/api/users/search/:query')
   .get(controller.get_user_by_query);
+
 };
