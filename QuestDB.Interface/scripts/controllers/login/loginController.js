@@ -1,5 +1,5 @@
 ﻿var app = angular.module('questDB');
-app.controller('loginCtrl', function ($scope, $http, $timeout) {
+app.controller('LoginController', function ($scope, $http, $timeout) {
     $scope.form = {
         email: "",
         password: ""

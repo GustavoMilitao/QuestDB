@@ -7,15 +7,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}\\QuestDB.Start\\server.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}"
-            
+            "name": "iniciar questDB",
+            "program": "${workspaceRoot}/server.js"
         }
     ]
 }

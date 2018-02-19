@@ -10,24 +10,24 @@ exports.app.use(exports.cookieParser());
 exports.app.use(exports.express.static('./'));
 exports.app.use(exports.bodyParser.urlencoded({ extended: true }));
 exports.app.use(exports.bodyParser.json());
-exports.path = require('path');
-exports.app.engine('html', require('ejs').renderFile);
+// exports.path = require('path');
+// exports.app.engine('html', require('ejs').renderFile);
 exports.openUrl = require("openurl");
 
 // import dos arquivos da aplicação
 
 //entidades
-exports.user = require('../QuestDB.Entities/user');
-exports.question = require('../QuestDB.Entities/question');
-exports.login = require('../QuestDB.Entities/login');
+exports.user = require('./QuestDB.Entities/user');
+exports.question = require('./QuestDB.Entities/question');
+exports.login = require('./QuestDB.Entities/login');
 
 // rotas base
-exports.routesBase = require('../QuestDB.API/routes/baseRoutes');
+exports.routesBase = require('./QuestDB.API/routes/baseRoutes');
 
 // rotas API
-exports.routesUserAPI = require('../QuestDB.API/routes/userRoutes');
-exports.routesQuestionAPI = require('../QuestDB.API/routes/questionRoutes');
-exports.routesLoginAPI = require('../QuestDB.API/routes/loginRoutes');
+exports.routesUserAPI = require('./QuestDB.API/routes/userRoutes');
+exports.routesQuestionAPI = require('./QuestDB.API/routes/questionRoutes');
+exports.routesLoginAPI = require('./QuestDB.API/routes/loginRoutes');
 
 // rotas Aplicação
 // exports.routesLogin = require('../QuestDB.Interface/routes/loginRoutes');
