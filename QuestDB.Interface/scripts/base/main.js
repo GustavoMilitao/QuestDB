@@ -1,5 +1,7 @@
 angular.module('questDB', ['angucomplete-alt', 'ngRoute'])
-.config(function($routeProvider){
+.config(function($routeProvider, $locationProvider){
+
+    $locationProvider.html5Mode(true);
 
     $routeProvider.when('/', {
         templateUrl : 'QuestDB.Interface/views/partials/login/Index.html',
@@ -15,5 +17,7 @@ angular.module('questDB', ['angucomplete-alt', 'ngRoute'])
         templateUrl : 'QuestDB.Interface/views/partials/login/Index.html',
         controller : 'LoginController'
     });
+
+    $routeProvider.otherwise({ redirectTo : '/'});
 
 });
