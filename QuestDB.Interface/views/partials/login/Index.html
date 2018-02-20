@@ -1,17 +1,17 @@
 ﻿<div class="row">
     <div align="center" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered">
-        <form ng-submit="submitForm()" class="login-dp">
+        <form ng-submit="submitForm()" name="formLogin" class="login-dp">
             <h1>questDB</h1>
-            <h6 class="fonte-login-incorreto" ng-show="shown">Usuário ou senha inválidos</h6>
+            <label class="fonte-login-incorreto" ng-show="shown">Usuário ou senha inválidos</label>
             <div class="col-md-12 col-sm-12 col-lg-12 espacado">
                 <h4>Login</h4>
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputEmail2">Email</label>
-                    <input type="email" ng-model="form.email" class="form-control" id="user" placeholder="Email ou Apelido" required>
+                    <input name="email" type="email" ng-model="form.email" class="form-control" id="user" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="exampleInputPassword2">Senha</label>
-                    <input type="password" ng-model="form.password" class="form-control" id="password" placeholder="Senha" required>
+                    <input name="password" type="password" ng-model="form.password" class="form-control" id="password" placeholder="Senha" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Entrar</button>

@@ -29,6 +29,19 @@ exports.get_user_by_query = function (req, res) {
     });
 };
 
+exports.get_logged_user = function(req, res){
+  userBusiness.get_logged_user(req, res,
+  function(err, response){
+    if (err)
+        res.send({ success: false, error: err });
+      if (response.id) {
+        res.send({ success: true, user : response });
+      } else {
+        res.send({ success: false });
+      }
+  });
+}
+
 exports.create_a_user = function (req, res) {
   userBusiness.create_a_user(req, res,
     function (err, response) {

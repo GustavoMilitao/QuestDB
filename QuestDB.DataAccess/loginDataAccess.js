@@ -4,11 +4,11 @@ var connection = require('./connection/connection');
 
 var User = connection.mongoose.model('Users');
 
-var Login = connection.mongoose.model('Logins');
+var Login = connection.mongoose.model('Login');
 
 exports.login_a_user = function (req, res, callback) {
-    exports.User.find({
-        user: req.body.user,
+    User.find({
+        email: req.body.email,
         password: req.body.password
     },
         function (err, response) {
@@ -16,8 +16,8 @@ exports.login_a_user = function (req, res, callback) {
                 callback(err, response);
             } else {
                 var today = new Date();
-                var new_login = new exports.Login({
-                    idUser: response.id,
+                var new_login = new Login({
+                    idUser: response[0].id,
                     maxAge: today.setDate(today.getDate() + 365)
                 });
                 new_login.save(function (error, resp) {
@@ -29,5 +29,5 @@ exports.login_a_user = function (req, res, callback) {
 }
 
 exports.get_session = function (req, res, callback) {
-    exports.Login.findById(req.cookies['user'], callback);
+    Login.findById(req.cookies['user'], callback);
 }

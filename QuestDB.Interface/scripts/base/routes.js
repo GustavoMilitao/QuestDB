@@ -10,7 +10,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(userCookie,
+                        loginService.get_session(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
@@ -30,7 +30,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(userCookie,
+                        loginService.get_session(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
@@ -45,13 +45,12 @@ angular.module('questDB')
 
         $routeProvider.when('/home', {
             templateUrl: 'QuestDB.Interface/views/partials/home/Index.html',
-            controller: 'LoginController',
+            controller: 'HomeController',
             resolve: {
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(userCookie,
-                            function (response) {
+                        loginService.get_session(function (response) {
                                 if (!response.success || !response.validSession) {
                                     $location.path('/');
                                 }
@@ -73,7 +72,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(userCookie,
+                        loginService.get_session(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
@@ -93,7 +92,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(userCookie,
+                        loginService.get_session(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');

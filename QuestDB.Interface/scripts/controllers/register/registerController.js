@@ -1,6 +1,6 @@
 ﻿var app = angular.module('questDB');
 app.controller('RegisterController',
-    function ($scope, $http, $timeout, userService) {
+    function ($scope, $http, $timeout, $location, userService) {
         $scope.form = {
             user: "",
             email: "",
@@ -8,7 +8,7 @@ app.controller('RegisterController',
             password1: ""
         };
         $scope.telaLogin = function () {
-            window.location.href = "/";
+            $location.path("/");
         }
         $scope.senhasDifer = false;
         $scope.usuarioCadastrado = false;

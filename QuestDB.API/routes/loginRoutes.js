@@ -5,6 +5,6 @@ module.exports = function(app) {
 
   app.route('/api/login')
   .post(controller.login_a_user)
-  .get(controller.get_session);
+  .get(controller.get_session_valid);
   
 };

@@ -14,4 +14,4 @@ var Login = new Schema({
   }
 });
 
-module.exports = mongoose.model('Logins', Login);
+module.exports = mongoose.model('Login', Login);
