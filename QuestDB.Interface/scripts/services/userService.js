@@ -9,18 +9,18 @@ function userService($resource) {
         }
     });
 
-    userService.resourceLoggedUser = $resource('/api/users/logged');
+    userService.resourceLoggedUser = $resource('/api/logged');
 
     userService.get_a_user = function (idUser, callbackSuccess, callbackError) {
-        userService.resourceUser.get({ userId: idUser }, callbackSuccess, callbackError);
+        return userService.resourceUser.get({ userId: idUser }, callbackSuccess, callbackError).$promise;
     }
 
     userService.create_a_user = function (user, callbackSuccess, callbackError) {
-        userService.resourceUser.save(user, callbackSuccess, callbackError);
+        return userService.resourceUser.save(user, callbackSuccess, callbackError).$promise;
     }
 
     userService.get_logged_user = function(callbackSuccess, callbackError){
-        userService.resourceLoggedUser.get(callbackSuccess, callbackError);
+        return userService.resourceLoggedUser.get(callbackSuccess, callbackError).$promise;
     }
 
     return userService;

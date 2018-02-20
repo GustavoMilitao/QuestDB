@@ -168,11 +168,14 @@ app.controller('HomeController',
 
         $scope.get_logged_user = function () {
             userService.get_logged_user(function (response) {
-                $scope.user = response;
+                $scope.user = response.user;
+                $scope.ready = true;
             }, function (error) {
-                alert(error);
+                alert(error.message);
             })
         }
+
+        $scope.get_logged_user();
     });
 
 function contemPokemonNaLista(nome, lista) {

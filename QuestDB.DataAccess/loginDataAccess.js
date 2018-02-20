@@ -29,5 +29,6 @@ exports.login_a_user = function (req, res, callback) {
 }
 
 exports.get_session = function (req, res, callback) {
-    Login.findById(req.cookies['user'], callback);
+    var cookie = req.cookies['user'];
+    Login.findById(cookie, callback);
 }

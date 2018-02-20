@@ -1,5 +1,6 @@
 ﻿var app = angular.module('questDB');
-app.controller('LoginController', function ($scope, $http, $timeout, $location, loginService) {
+app.controller('LoginController', function ($scope, $http, $timeout, $location, loginService, $routeParams, permission) {
+    $scope.ready = !permission || (permission.success && !permission.validSession);
     $scope.form = {
         email: "",
         password: ""
@@ -12,10 +13,12 @@ app.controller('LoginController', function ($scope, $http, $timeout, $location, 
         $scope.shown = false;
     };
     $scope.submitForm = function () {
+        $('.btn-load').button('loading');
         loginService.login_a_user({
             email: $scope.form.email,
             password: $scope.form.password
         }, function (response) {
+            $('.btn-load').button('reset');
             if (response.success) {
                 $location.path("/home");
             } else {
@@ -25,8 +28,8 @@ app.controller('LoginController', function ($scope, $http, $timeout, $location, 
                 }, 2000);
             }
         }, function (error) {
-            alert(error);
+            $('.btn-load').button('reset');
+            alert(error.message);
         });
     };
-
 });

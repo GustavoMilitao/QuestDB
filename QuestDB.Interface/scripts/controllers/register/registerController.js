@@ -47,7 +47,7 @@ app.controller('RegisterController',
                         // }, 3000);
                     }
                 }, function (error) {
-                    alert(error);
+                    alert(error.message);
                 });
             }
         };

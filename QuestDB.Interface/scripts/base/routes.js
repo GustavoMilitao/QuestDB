@@ -3,20 +3,23 @@ angular.module('questDB')
 
         $locationProvider.html5Mode(true);
 
+
+
         $routeProvider.when('/', {
             templateUrl: 'QuestDB.Interface/views/partials/login/Index.html',
             controller: 'LoginController',
             resolve: {
-                permission: function ($location, $cookies, loginService) {
+                permission: function ($location, $cookies, $route, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(
+                        return loginService.get_session_valid(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
                                 }
                             }, function (err) {
-                            });
+                            }
+                        );
                     }
                 }
             },
@@ -30,13 +33,13 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(
+                        return loginService.get_session_valid(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
                                 }
                             }, function (err) {
-                            });
+                            }).$promise;
                     }
                 }
             },
@@ -50,13 +53,13 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(function (response) {
-                                if (!response.success || !response.validSession) {
-                                    $location.path('/');
-                                }
-                            }, function (err) {
+                        return loginService.get_session_valid(function (response) {
+                            if (!response.success || !response.validSession) {
                                 $location.path('/');
-                            });
+                            }
+                        }, function (err) {
+                            $location.path('/');
+                        }).$promise;
                     } else {
                         $location.path('/');
                     }
@@ -72,7 +75,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(
+                        loginService.get_session_valid(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');
@@ -92,7 +95,7 @@ angular.module('questDB')
                 permission: function ($location, $cookies, loginService) {
                     var userCookie = $cookies.get('user');
                     if (userCookie) {
-                        loginService.get_session(
+                        loginService.get_session_valid(
                             function (response) {
                                 if (response.success && response.validSession) {
                                     $location.path('/home');

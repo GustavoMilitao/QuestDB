@@ -17,10 +17,10 @@ exports.get_user_by_query = function (req, res, callback) {
 
 exports.get_logged_user = function (req, res, callback) {
       loginBusiness.get_session(req, res, function (err, response) {
-            if (err)
-                  res.send({ success = false, error: err });
-            if (response.id) {
-                  req.params.userId = response.userId;
+            if (err){
+                  res.send({ success : false, error: err });
+            } else if (response.id) {
+                  req.params.userId = response._doc.idUser;
                   userDataAccess.get_a_user(req, res, callback);
             } else {
                   callback(err, response);
