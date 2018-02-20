@@ -1,6 +1,6 @@
-﻿angular.module('questDB', [])
-.controller('registerDoneCtrl', [function () {
+﻿var app = angular.module('questDB');
+app.controller('RegisterDoneController', ['$location', '$timeout', function ($location, $timeout) {
     angular.element(document).ready(function () {
-            setTimeout(function(){window.location.href ="/"}, 3000);
+        $timeout(function(){$location.path("/")}, 2000);
     });
 }]);

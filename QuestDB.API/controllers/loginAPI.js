@@ -16,6 +16,6 @@ exports.get_session = function (req, res) {
     function (err, response) {
       if (err)
         res.send({ success: false, error: err });
-      res.send({ success: true });
+      res.send({ success: true, validSession : response.length > 0 });
     });
 };

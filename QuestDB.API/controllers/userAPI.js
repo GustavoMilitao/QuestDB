@@ -34,7 +34,11 @@ exports.create_a_user = function (req, res) {
     function (err, response) {
       if (err)
         res.send({ success: false, error: err });
-      res.send({ success: true, user: response });
+      if (response.length) {
+        res.send({ success: false, message: 'Usuário já cadastrado!' })
+      } else {
+        res.send({ success: true, user: response });
+      }
     });
 };
 

@@ -15,7 +15,14 @@ exports.get_user_by_query = function (req, res, callback) {
 };
 
 exports.create_a_user = function (req, res, callback) {
-      userDataAccess.create_a_user(req, res, callback);
+      req.params.query = "[{\"email\" : \""+req.body.email+"\"}]";
+      userDataAccess.get_user_by_query(req, res, function (err, response) {
+            if (!response.length) {
+                  userDataAccess.create_a_user(req, res, callback);
+            } else{
+                  callback(err, response);
+            }
+      })
 };
 
 exports.update_a_user = function (req, res, callback) {

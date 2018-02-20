@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <div align="center" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered">
+        <form ng-submit="submitForm()" class="login-dp">
+            <h1>QuestDB</h1>
+            <h6 class="fonte-login-incorreto" ng-show="usuarioCadastrado">Usuário já cadastrado</h6>
+            <label class="fonte-login-incorreto" ng-show="senhasDifer">Senhas diferem</label>
+            <div class="col-md-12 col-sm-12 col-lg-12 espacado">
+                <h4>Castrastro</h4>
+                <div class="form-group">
+                    <label class="sr-only" for="user">Nome</label>
+                    <input ng-model="form.user" class="form-control" id="user" placeholder="Nome" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="email">Email</label>
+                    <input type="email" ng-model="form.email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="password">Senha</label>
+                    <input type="password" ng-model="form.password" class="form-control" id="password" placeholder="Senha" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="password">Senha</label>
+                    <input type="password" ng-model="form.password1" class="form-control" id="password1" placeholder="Confirme a Senha" required>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-lg-6 espacado">
+                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 espacado">
+                            <a href="/" class="btn btn-primary btn-block">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
