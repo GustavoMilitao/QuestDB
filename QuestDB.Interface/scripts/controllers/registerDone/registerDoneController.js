@@ -1,6 +1,5 @@
 ﻿var app = angular.module('questDB');
-app.controller('RegisterDoneController', ['$location', '$timeout', function ($location, $timeout) {
-    angular.element(document).ready(function () {
-        $timeout(function(){$location.path("/")}, 2000);
-    });
+app.controller('RegisterDoneController', ['$location', '$scope', '$timeout', function ($location, $scope, $timeout, permission) {
+    $scope.ready = !permission || (permission.success && !permission.validSession);
+    $timeout(function(){$location.path("/")}, 2000);
 }]);
