@@ -108,4 +108,27 @@ angular.module('questDB')
 
         $routeProvider.otherwise({ redirectTo: '/' });
 
+        $routeProvider.when('/question/new', {
+            templateUrl: 'QuestDB.Interface/views/partials/question/Index.html',
+            controller: 'QuestionController',
+            resolve: {
+                permission: function ($location, $cookies, loginService) {
+                    var userCookie = $cookies.get('user');
+                    if (userCookie) {
+                        return loginService.get_session_valid(function (response) {
+                            if (!response.success || !response.validSession) {
+                                $location.path('/');
+                            }
+                        }, function (err) {
+                            $location.path('/');
+                        });
+                    } else {
+                        $location.path('/');
+                    }
+                }
+            },
+            caseInsensitiveMatch: true
+        });
+
     });
+    

@@ -1,7 +1,7 @@
 ﻿var app = angular.module('questDB');
 app.controller('RegisterController',
     function ($scope, $http, $timeout, $location, userService, permission) {
-        $scope.ready = !permission || (permission.success && !permission.validSession);
+        $scope.ready = !permission || (permission.success && permission.validSession);
         $scope.form = {
             user: "",
             email: "",

@@ -1,6 +1,6 @@
 ﻿var app = angular.module('questDB');
 app.controller('LoginController', function ($scope, $http, $timeout, $location, loginService, $routeParams, permission) {
-    $scope.ready = !permission || (permission.success && !permission.validSession);
+    $scope.ready = !permission || (permission.success && permission.validSession);
     $scope.form = {
         email: "",
         password: ""
