@@ -23,7 +23,7 @@ exports.get_session_valid = function (req, res) {
       } else {
         res.send({
           success: true,
-          validSession: response.id != undefined &&
+          validSession: response && response.id != undefined &&
             response.maxAge > (new Date())
         });
       }

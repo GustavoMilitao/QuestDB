@@ -1,1 +1,1 @@
-angular.module('questDB' , ['angucomplete-alt', 'ngRoute', 'ngCookies', 'questDBServices']);
+angular.module('questDB' , ['angucomplete-alt', 'ngRoute', 'ngCookies', 'questDBServices', 'ngTable']);

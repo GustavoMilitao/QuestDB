@@ -1,6 +1,6 @@
 ﻿var app = angular.module('questDB');
-app.controller('LoginController', function ($scope, $timeout, $location, loginService, permission) {
-    $scope.ready = !permission || (permission.success && permission.validSession);
+app.controller('LoginController', function ($scope, $timeout, $location, loginService) {
+    $scope.ready = false;
     $scope.form = {
         email: "",
         password: ""
@@ -32,4 +32,14 @@ app.controller('LoginController', function ($scope, $timeout, $location, loginSe
             alert(error.message);
         });
     };
+
+    // esconder a view enquanto não carrega o retorno da chamada asíncrona
+    loginService.get_session_valid(
+        function (response) {
+            if (response.success && !response.validSession) {
+                $scope.ready = true;
+            }
+        }, function (err) {
+        }
+    );
 });

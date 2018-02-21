@@ -1,7 +1,7 @@
 ﻿var app = angular.module('questDB');
 app.controller('RegisterController',
-    function ($scope, $timeout, $location, userService, permission) {
-        $scope.ready = !permission || (permission.success && permission.validSession);
+    function ($scope, $timeout, $location, userService) {
+        $scope.ready = false;
         $scope.form = {
             user: "",
             email: "",
@@ -33,11 +33,13 @@ app.controller('RegisterController',
                     $scope.hideSenhasDiferem();
                 }, 2000);
             } else {
+                $('.btn-load').button('loading');
                 userService.create_a_user({
                     user: $scope.form.user,
                     email: $scope.form.email,
                     password: $scope.form.password
                 }, function (response) {
+                    $('.btn-load').button('reset');
                     if (response.success) {
                         window.location.href = "/registerDone";
                     } else {
@@ -48,8 +50,18 @@ app.controller('RegisterController',
                         // }, 3000);
                     }
                 }, function (error) {
+                    $('.btn-load').button('reset');
                     alert(error.message);
                 });
             }
         };
+
+        loginService.get_session_valid(
+            function (response) {
+                if (response.success && !response.validSession) {
+                    $scope.ready = true;
+                }
+            }, function (err) {
+            }
+        );
     });

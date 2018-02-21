@@ -125,10 +125,37 @@ angular.module('questDB')
                     } else {
                         $location.path('/');
                     }
+                },
+                readonly : function(){
+                    return false;
                 }
             },
             caseInsensitiveMatch: true
         });
 
+        $routeProvider.when('/question/:questionId', {
+            templateUrl: 'QuestDB.Interface/views/partials/question/Index.html',
+            controller: 'QuestionController',
+            resolve: {
+                permission: function ($location, $cookies, loginService) {
+                    var userCookie = $cookies.get('user');
+                    if (userCookie) {
+                        return loginService.get_session_valid(function (response) {
+                            if (!response.success || !response.validSession) {
+                                $location.path('/');
+                            }
+                        }, function (err) {
+                            $location.path('/');
+                        });
+                    } else {
+                        $location.path('/');
+                    }
+                },
+                readonly : function(){
+                    return true;
+                }
+            },
+            caseInsensitiveMatch: true
+        });
     });
     

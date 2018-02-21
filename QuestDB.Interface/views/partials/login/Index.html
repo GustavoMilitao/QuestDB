@@ -1,4 +1,15 @@
-﻿<div ng-show="ready" class="row">
+﻿<div ng-show="!ready" class="container">
+    <div class="row">
+        <div id="loading" style="z-index:500">
+            <ul class="bokeh">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-show="ready" class="row">
     <div align="center" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered">
         <form ng-submit="submitForm()" name="formLogin" class="login-dp">
             <h1>questDB</h1>
@@ -18,7 +29,11 @@
                 </div>
             </div>
             <div class="bottom text-center">
-                <h5>Não tem cadastro ? <a href="/register"><b>Cadastre-se</b></a></h5>
+                <h5>Não tem cadastro ?
+                    <a href="/register">
+                        <b>Cadastre-se</b>
+                    </a>
+                </h5>
             </div>
         </form>
     </div>

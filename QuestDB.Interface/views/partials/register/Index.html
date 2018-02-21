@@ -1,4 +1,15 @@
-﻿<div ng-show="ready" class="row">
+﻿<div ng-show="!ready" class="container">
+    <div class="row">
+        <div id="loading" style="z-index:500">
+            <ul class="bokeh">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-show="ready" class="row">
     <div align="center" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-centered">
         <form ng-submit="submitForm()" class="login-dp">
             <h1>QuestDB</h1>
@@ -25,7 +36,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-lg-6 espacado">
-                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                            <button data-loading-text="<i class='fa fa-circle-notch fa-spin'></i> Cadastrando" type="submit" class="btn btn-primary btn-load btn-block">Cadastrar</button>
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6 espacado">
                             <a href="/" class="btn btn-primary btn-block">Voltar</a>

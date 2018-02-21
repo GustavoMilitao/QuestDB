@@ -1,114 +1,72 @@
-﻿<div class="row">
+﻿<div ng-show="!ready" class="container">
+        <div class="row">
+            <div id="loading" style="z-index:500">
+                <ul class="bokeh">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<div ng-cloak class="row">
     <div align="center" class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-centered">
         <form class="login-dp">
-            <div ng-show="!ready" class="container">
-                <div class="row">
-                    <div id="loading" style="z-index:500">
-                        <ul class="bokeh">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div ng-show="ready" class="col-md-12 col-sm-12 col-lg-12 espacado">
                 <button title="Sair" ng-click="logout()" type="button" class="pull-right btn btn-primary btn-circle btn">
                     <i class="glyphicon glyphicon-log-out pull-right"></i>
                 </button>
                 <h4>Olá {{user.user}}</h4>
             </div>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div ng-show="questions.length" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        Abaixo estão todas as questões cadastradas:
+                    </div>
+                    <div ng-show="!questions.length" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label class="fonte-login-incorreto">Não há questões cadastradas</label>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <div ng-show="questions.length" class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <table ng-table="tableParams" class="table" show-filter="true">
+                            <tr ng-repeat="question in $data">
+                                <td title="'Título'" filter="{ name: 'text'}" sortable="'title'">
+                                    {{question.title}}</td>
+                                <td title="'Tipo'" filter="{ questionTypeDescription: 'text'}" sortable="'questionTypeId'">
+                                    {{question.questionTypeDescription}}</td>
+                                <td title="'Criado por'" filter="{ user: 'text'}" sortable="'user'">
+                                    {{question.user}} ( {{question.emailUser}} )</td>
+                                <td title="'Visualizar'">
+                                    <a ng-href="/question/{{question._id}}" class="btn btn-primary btn-sm pull-right">
+                                        <span class="glyphicon glyphicon-eye-open">
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12 col-sm-12 col-lg-12 espacado">
-                crie suas questões abaixo
+                <h4>crie suas questões abaixo</h3>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-6 col-centered espaco-baixo">
-                    <a ng-click="adicionarTime()" class="btn icon-btn btn-success">
+                    <a href="/question/new" class="btn icon-btn btn-success">
                         <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success">
                         </span>
-                        Time
+                        Questão
                     </a>
                 </div>
             </div>
         </form>
-    </div>
-    <div class="container" id="times">
-        <div ng-repeat="team in teams" align="center" class="col-xs-12 col-sm-8 col-md-8 col-lg-4 col-centered">
-            <div class="row">
-                <form class="login-dp">
-                    <div class="col-md-12 col-sm-12 col-lg-12 espacado">
-                        <h5>Preencha as informações sobre o time</h5>
-                        <br>
-                        <h4>{{team.name}}</h4>
-                        <br>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail2">Nome do time</label>
-                            <input ng-keyup="atualizarNomeTime(team)" ng-model="team.name" class="form-control" placeholder="Nome do time">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputPassword2">Nome do Pokemon</label>
-                            <input type="text" class="form-control" ng-model="team.pokemonPartialName" ng-keyup="completePokemon(team)" class="form-control"
-                                placeholder="Pesquise pokemons aqui">
-                            <ul class="list-group" ng-model="team.hideThisPokemon" ng-hide="team.hideThisPokemon">
-                                <a class="list-group-item" href="" ng-click="insertLinePokemon(team,pokemonData)" ng-repeat="pokemonData in team.filterPokemon">
-                                    {{pokemonData.name}}
-                                </a>
-                            </ul>
-                            <br>
-                            <h4 ng-show="team.pokemons.length > 0">Pokemons </h4>
-                            <ul class="list-group">
-                                <li class="list-group-item team-background skills-fluid" ng-repeat="pokemon in team.pokemons">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h2 class="pokemon-name">
-                                                {{pokemon.name}}
-                                            </h2>
-                                        </div>
-                                        <div class="col-md-6 pull-right">
-                                            <button title="Excluir pokemon" ng-click="excluirPokemon(team,pokemon.name)" type="button" class="pull-right btn btn-warning btn-circle btn">
-                                                <i class="glyphicon glyphicon-remove"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <input class="form-control" ng-model="pokemon.skillPartialName" ng-keyup="completeSkill(pokemon)" class="form-control" placeholder="Pesquise skills aqui">
-                                        <ul class="list-group skills-fluid" ng-model="pokemon.hideThisSkill" ng-hide="pokemon.hideThisSkill">
-                                            <a class="list-group-item" href="" ng-click="insertLineSkill(team,pokemon,skillData)" ng-repeat="skillData in pokemon.filterSkill">
-                                                {{skillData.name}}
-                                            </a>
-                                        </ul>
-                                        <br>
-                                        <ul class="list-group">
-                                            <li class="list-group-item skill-item-style skills-fluid" ng-repeat="skill in pokemon.skills">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h3>
-                                                            {{skill.name}}
-                                                        </h3>
-                                                    </div>
-                                                    <div class="col-md-6 pull-right">
-                                                        <button title="Excluir skill" ng-click="excluirSkill(team,pokemon,skill.name)" type="button" class="pull-right btn btn-warning btn-circle btn">
-                                                            <i class="glyphicon glyphicon-remove"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 col-centered espaco-baixo">
-                            <a ng-click="excluirTime(team)" class="btn icon-btn btn-danger">
-                                <span class="glyphicon btn-glyphicon glyphicon-trash img-circle text-danger"></span>Excluir</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 </div>

@@ -133,6 +133,8 @@ textarea {
 
 .col-centered { 
     margin: 5% auto !important;
+    margin-bottom: 2% !important;
+    margin-top: 2% !important;
     float: none !important;
 }
 

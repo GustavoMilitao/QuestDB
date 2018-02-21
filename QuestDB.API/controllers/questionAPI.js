@@ -19,7 +19,7 @@ exports.get_a_question = function (req, res) {
       if (err) {
         res.send({ success: false, error: err });
       } else {
-        res.send({ success: true, questions: response });
+        res.send({ success: true, question: response });
       }
     });
 }

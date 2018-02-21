@@ -23,5 +23,9 @@ function userService($resource) {
         return userService.resourceLoggedUser.get(callbackSuccess, callbackError).$promise;
     }
 
+    userService.get_users = function(callbackSuccess, callbackError){
+        return userService.resourceUser.get({ }, callbackSuccess, callbackError).$promise;
+    }
+
     return userService;
 };

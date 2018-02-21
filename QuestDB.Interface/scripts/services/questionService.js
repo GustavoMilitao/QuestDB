@@ -25,5 +25,9 @@ function questionService($resource) {
         return questionService.resourceQuestion.get({},callbackSuccess, callbackError).$promise;
     };
 
+    questionService.get_question = function(questId, callbackSuccess, callbackError){
+        return questionService.resourceQuestion.get({ questionId : questId },callbackSuccess, callbackError).$promise;
+    };
+
     return questionService;
 };
