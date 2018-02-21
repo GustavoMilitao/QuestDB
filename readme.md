@@ -63,23 +63,28 @@ Para depurar o sistema:
 
 A integração é feita por meio da API Restful da aplicação. Segue os endereços para utilizar a API :
 
-localhost:3000/api/login  :
+    localhost:3000/api/login  :
+
     GET => obtém resposta para sessão válida ou inválida apartir do cookie "user" enviado.
     POST => Loga um usuário apartir do body da requisição
 
-localhost:3000/api/questions  :
+    localhost:3000/api/questions  :
+
     GET => Obtém todas as questões
     POST => Cria uma questão
 
-localhost:3000/api/questions/:questionId
+    localhost:3000/api/questions/:questionId
+
     GET => Obtém uma questão
     PUT => Atualiza uma questão
     DELETE => Deleta uma questão
 
-localhost:3000/api/users/:userId/questions
+    localhost:3000/api/users/:userId/questions
+
     GET => Obtém todas as questões feitas pelo usuário passado como parâmetro
 
-localhost:3000/api/users/search/:query/questions
+    localhost:3000/api/users/search/:query/questions
+
     GET => Obtém todas as questões de um usuário pesquisado por algum campo da entidade.
 
     Exemplo de uso : 
@@ -90,18 +95,21 @@ localhost:3000/api/users/search/:query/questions
 
     ATENÇÃO : A expressão de declaração é um array com um objeto que descreve a entidade. As aspas também são obrigatórias.
 
-localhost:3000/api/logged/questions
+    localhost:3000/api/logged/questions
+
     POST => Cria uma questão para o usuário logado. Obrigatório apenas ESTAR LOGADO e passar no body o objeto questão criado.
 
-localhost:3000/api/questionTypes
+    localhost:3000/api/questionTypes
+
     GET => Obtém todos os tipos de questão (Discursiva, Objetiva).
     POST => Cria um tipo de questão.
 
-localhost:3000/api/users
+    localhost:3000/api/users
+
     GET => Obtém todos os usuários cadastrados.
     POST => Cria um usuário.
 
-localhost:3000/api/users/:userId
+    localhost:3000/api/users/:userId
 
     ATENÇÃO : O ID do cookie diz respeito ao Id da entidade login que referencia o usuário no banco. É necessário saber o Id do usuário para utilizar esta requisição.
 
@@ -109,7 +117,7 @@ localhost:3000/api/users/:userId
     PUT => Atualiza um usuário
     DELETE => Deleta um usuário
 
-localhost:3000/api/users/search/:query
+    localhost:3000/api/users/search/:query
 
     GET => Obtém um usuário pesquisado por algum campo da entidade.
 
@@ -119,7 +127,8 @@ localhost:3000/api/users/search/:query
 
     A chamada GET acima obtém todos os usuários que possuirem email igual a gustavo.h.militao@gmail.com
 
-localhost:3000/api/logged
+    localhost:3000/api/logged
+
     GET => Obtém o usuário logado apartir do cookie.
     
 
