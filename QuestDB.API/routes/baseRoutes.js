@@ -3,7 +3,8 @@ var express = require('express');
 
 module.exports = function (app) {
 
+
   app.all('/*', function (req, res) {
-    res.send({ success : false, message : 'rota inválida'});
+    res.sendFile(path.resolve('QuestDB.Interface/views/main/Index.html'));
   });
 }
