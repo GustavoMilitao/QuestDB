@@ -1,5 +1,12 @@
 --- PASSO A PASSO ---
 
+ANTES DE INICIAR : 
+
+    - Certifique-se de não acessar o sistema por uma janela anônima (cookies são necessários para a aplicação)
+
+    - Certifique-se de não estar em uma rede com proxy (alguns proxies podem barrar recursos necessários para a aplicação).
+
+
 Para iniciar o sistema:
 
 1 - Certifique-se de possuir instalado o framework NODE.JS.
@@ -36,8 +43,23 @@ Para iniciar o sistema:
 
 12- Na tela de criação de questão, insira os dados da questão e clique em salvar questão para criá-la.
 
-
 O sistema tem uma boa taxa de alcance responsivo e funciona para multiusuários, além de guardar cookies.
+
+Para depurar o sistema:
+
+1 - Utilize qualquer source control que consiga acessar o git.
+
+
+2 - Faça o clone desse repositório.
+
+
+3 - Configure a ferramenta de build para executar o server.js (ou ler o arquivo package.json que está especificado inicializar o arquivo server.js no start da aplicação).
+
+
+5 - Siga os passos 5 a 11 do passo a passo para inicializar.
+
+
+---- INTEGRAÇÃO ----
 
 A integração é feita por meio da API Restful da aplicação. Segue os endereços para utilizar a API :
 
@@ -107,18 +129,8 @@ localhost:3000/api/logged
 
     O ID DO LOGIN É DIFERENTE DO ID DO USER. O login apenas referencia o user para maior segurança de sessão.
 
-Para depurar o sistema:
 
-1 - Utilize qualquer source control que consiga acessar o git.
-
-
-2 - Faça o clone desse repositório.
-
-
-3 - Configure a ferramenta de build para executar o server.js (ou ler o arquivo package.json que está especificado inicializar o arquivo server.js no start da aplicação).
-
-
-5 - Siga os passos 5 a 11 do passo a passo para inicializar.
 
 
 Bom proveito.
+
