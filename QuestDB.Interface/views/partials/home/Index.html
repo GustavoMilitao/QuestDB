@@ -37,7 +37,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <table ng-table="tableParams" class="table" show-filter="true">
                             <tr ng-repeat="question in $data">
-                                <td title="'Título'" filter="{ name: 'text'}" sortable="'title'">
+                                <td title="'Título'" filter="{ title: 'text'}" sortable="'title'">
                                     {{question.title}}</td>
                                 <td title="'Tipo'" filter="{ questionTypeDescription: 'text'}" sortable="'questionTypeId'">
                                     {{question.questionTypeDescription}}</td>
