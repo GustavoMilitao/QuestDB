@@ -3,6 +3,7 @@
 var connection = require('./connection/connection');
 
 var Question = connection.mongoose.model('Questions');
+var QuestionType = connection.mongoose.model('QuestionTypes');
 var userDataAccess = require('../QuestDB.DataAccess/userDataAccess');
 
 exports.get_questions = function (req, res, callback) {
@@ -50,3 +51,12 @@ exports.get_user_questions_by_query = function (req, res, callback) {
             }
         });
 };
+
+exports.get_question_types = function (req, res, callback) {
+    QuestionType.find({}, callback);
+}
+
+exports.create_a_question_type = function (req, res, callback) {
+    var new_question_type = new QuestionType(req.body);
+    new_question_type.save(callback);
+}

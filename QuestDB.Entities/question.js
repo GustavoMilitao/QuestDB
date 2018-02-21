@@ -8,8 +8,14 @@ var Question = new Schema({
     default: ""
   },
   questionType: {
-    type: String,
-    default: ""
+    typeId : {
+      type: String,
+      default: ""
+    },
+    typeDescription : {
+      type: String,
+      default: ""
+    }
   },
   title: {
     type: String,
@@ -23,6 +29,16 @@ var Question = new Schema({
     type: Array,
     default: []
   },
+  correctAlternative: {
+    letter : {
+      type: String,
+      default: ""
+    },
+    textAlternative : {
+      type: String,
+      default: ""
+    }
+  }
 });
 
 module.exports = mongoose.model('Questions', Question);

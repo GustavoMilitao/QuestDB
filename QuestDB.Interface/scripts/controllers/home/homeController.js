@@ -1,7 +1,9 @@
 ﻿var app = angular.module('questDB');
 app.controller('HomeController',
-    function ($scope, $http, $timeout, $templateCache, $compile, userService) {
+    function ($scope, userService, questionService) {
         var user;
+
+        $scope.questions = [];
 
         $scope.allSkills = [];
         $scope.allPokemons = [];
@@ -166,16 +168,17 @@ app.controller('HomeController',
             window.location.href = "/";
         }
 
-        $scope.get_logged_user = function () {
-            userService.get_logged_user(function (response) {
-                $scope.user = response.user;
+        userService.get_logged_user(function (response) {
+            $scope.user = response.user;
+            questionService.get_questions(function(response){
+                $scope.questions = response.questions;
                 $scope.ready = true;
             }, function (error) {
                 alert(error.message);
-            })
-        }
-
-        $scope.get_logged_user();
+            });
+        }, function (error) {
+            alert(error.message);
+        })
     });
 
 function contemPokemonNaLista(nome, lista) {

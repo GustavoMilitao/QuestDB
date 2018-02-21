@@ -17,4 +17,12 @@ module.exports = function (app) {
 
     app.route('/api/users/search/:query/questions')
     .get(controller.get_user_questions_by_query);
+
+    app.route('/api/logged/questions')
+    .post(controller.create_a_question_to_logged_user);
+
+    app.route('/api/questionTypes')
+    .get(controller.get_question_types)
+    .post(controller.create_a_question_type);
+    
 };

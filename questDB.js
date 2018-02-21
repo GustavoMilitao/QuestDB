@@ -19,6 +19,7 @@ exports.openUrl = require("openurl");
 //entidades
 exports.user = require('./QuestDB.Entities/user');
 exports.question = require('./QuestDB.Entities/question');
+exports.questionType = require('./QuestDB.Entities/questionType');
 exports.login = require('./QuestDB.Entities/login');
 
 // rotas base
