@@ -37,7 +37,7 @@ Para iniciar o sistema:
 9 - Efetue o login com seu usuário e senha.
 
 
-10 - Na tela principal (/home) é possível visualizar e filtras sobre todas as questões cadastradas. No final da página, o botão + questão é usado para criar novas questões. 
+10 - Na tela principal (/home) é possível visualizar e filtrar todas as questões cadastradas. No final da página, o botão + questão é usado para criar novas questões. 
 
 11 - Ao clicar no botão visualizar (ao lado da linha no grid) é possível visualizar a questão cadastrada por completo.
 
